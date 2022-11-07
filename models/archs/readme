@@ -3,7 +3,7 @@
 
 ### 2022-11-07   
 ART: Accurate Image Restoration with Attention Retractable Transformer, arXiv, 2022    
-https://github.com/gladzhang/ART/blob/main/basicsr/archs/art_arch.py    
+https://github.com/gladzhang/ART    
 
 ENLCA: Efficient Non-Local Contrastive Attention for Image Super-Resolution, AAAI22   
-https://github.com/Zj-BinXia/ENLCA/tree/f989a58b1302ea617bec1fd70d7f13b7980ebad1    
+https://github.com/Zj-BinXia/ENLCA    
