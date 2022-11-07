@@ -1,7 +1,8 @@
 # network_collection
 
-| paper | 参赛队伍 | 分数 | 总耗时（秒） | 最佳成绩提交时间 |
+| paper | paper_link | code_link | something | add_time |
 | :----:| :---- | :----: | :----: | :----: |
+| ART | [paper](https://arxiv.org/abs/2210.01427) | [code](https://github.com/gladzhang/ART) | 显存占用很大 | 2022-11-07 |
 
 ### 2022-11-07   
 ART: Accurate Image Restoration with Attention Retractable Transformer, arXiv, 2022    
