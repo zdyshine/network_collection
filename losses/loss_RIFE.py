@@ -6,7 +6,27 @@ import torchvision.models as models
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
+
+def flow2rgb(flow_map_np):
+    h, w, _ = flow_map_np.shape
+    rgb_map = np.ones((h, w, 3)).astype(np.float32)
+    normalized_flow_map = flow_map_np / (np.abs(flow_map_np).max())
+    
+    rgb_map[:, :, 0] += normalized_flow_map[:, :, 0]
+    rgb_map[:, :, 1] -= 0.5 * (normalized_flow_map[:, :, 0] + normalized_flow_map[:, :, 1])
+    rgb_map[:, :, 2] += normalized_flow_map[:, :, 1]
+    return rgb_map.clip(0, 1)
+
+
 # https://github.com/megvii-research/ECCV2022-RIFE/blob/main/model/loss.py
+'''
+        self.epe = EPE()
+        self.lap = LapLoss()
+        # self.sobel = SOBEL()
+        loss_l1 = (self.lap(merged[2], gt)).mean()
+        loss_tea = (self.lap(merged_teacher, gt)).mean()
+        loss_G = loss_l1 + loss_lap + loss_distill * 0.01 # when training RIFEm, the weight of loss_distill should be 0.005 or 0.002
+'''
 
 class EPE(nn.Module):
     def __init__(self):
