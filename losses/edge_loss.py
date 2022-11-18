@@ -49,7 +49,9 @@ class fftLoss(nn.Module):
         diff = torch.fft.fft2(x.to('cuda:0')) - torch.fft.fft2(y.to('cuda:0'))
         loss = torch.mean(abs(diff))
         return loss
-    
+###################
+# loss = loss_char + 0.01 * loss_fft + 0.05 * loss_edge
+###################
 class L1Loss(nn.Module):
 
     def __init__(self):
@@ -60,6 +62,7 @@ class L1Loss(nn.Module):
         return self.criterion(x,y)
 
 class FFTLoss(nn.Module):
+    # weight: 0.1
     def __init__(self):
         super(FFTLoss, self).__init__()
         self.L1 = L1Loss()
@@ -69,4 +72,8 @@ class FFTLoss(nn.Module):
         gt_fft = torch.rfft(y, signal_ndim=2, normalized=False, onesided=False)
 
         loss = self.L1(pred_fft, gt_fft)
-        return 
+        return loss
+##################
+# loss = loss_l1 + 0.1 * loss_fft
+###################
+
